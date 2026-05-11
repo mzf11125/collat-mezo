@@ -2,9 +2,52 @@
 
 Bank on Bitcoin. Spend your Bitcoin without selling it.
 
-Collat lets you deposit BTC as collateral, borrow MUSD, and spend at any merchant. Your Bitcoin stays in your custody. You only borrow what you need at checkout.
+Deposit BTC once. Shop normally. Collat does the rest.
 
-Built for the Mezo ecosystem across three tracks: Bitcoin Track, MEZO Track, MUSD Track.
+Collat lets you deposit BTC as collateral and auto-borrows the exact MUSD needed at checkout. No manual steps. No selling your Bitcoin. Your BTC stays on-chain in your vault.
+
+## How It Works
+
+```
+01. Deposit BTC
+    Lock BTC as collateral in your Collat vault. One-time setup.
+
+02. Shop Normally
+    Pay online or in-store. Collat auto-borrows the exact MUSD
+    needed and settles the merchant instantly.
+
+03. Repay and Unlock
+    Repay MUSD at any time. BTC is released proportionally back to you.
+```
+
+### Why it feels different
+
+**No manual borrow step** — Collat triggers the loan automatically at checkout.
+
+**BTC stays on-chain** — Your collateral never leaves the Mezo smart contract.
+
+**Repay on your schedule** — No fixed deadlines. No liquidation on everyday purchases.
+
+## Business Model
+
+Collat earns across three revenue streams:
+
+| Stream | Description |
+|--------|-------------|
+| Interest Spread | Difference between MUSD borrow rate and what liquidity providers receive. Core recurring revenue. |
+| Transaction Fees | Small fee on each auto-borrow event at checkout. Scales directly with payment volume. |
+| Collat Card Revenue | Interchange fees from card swipes plus a modest monthly card fee for physical card holders. |
+
+**The flywheel:** More BTC deposited raises the collateral base. More purchases drive transaction fee revenue. More card holders add interchange income. All three reinforce each other.
+
+## Collat Card
+
+A physical and virtual debit card backed by your BTC collateral, accepted anywhere Visa is accepted.
+
+- Auto-borrows MUSD the moment you swipe. No pre-loading required.
+- Works at any physical or online merchant worldwide.
+- BTC stays on-chain in your vault. Never held by us.
+- Virtual card available instantly; physical card shipped on mainnet.
 
 ## Architecture
 
@@ -13,9 +56,9 @@ User Wallet
     |
     v
 +------------------+     +------------------+
-|  BTC Vault       | --> |  MUSD Borrow     |
-|  (deposit/       |     |  (borrow/repay/   |
-|   withdraw)      |     |   liquidate)      |
+|  BTC Vault       | --> |  Auto-Borrow     |
+|  (deposit/       |     |  Engine          |
+|   withdraw)      |     |  (checkout CPI)  |
 +------------------+     +------------------+
     |                         |
     v                         v
@@ -51,6 +94,26 @@ The program is at `programs/collat-mezo/src/lib.rs`.
 - Collateral: SPL BTC token (8 decimals)
 - Borrow: MUSD token (6 decimals)
 
+## Roadmap
+
+| Phase | Milestone | Status |
+|-------|-----------|--------|
+| 1 | Smart contracts on Mezo testnet | Now |
+| 2 | Auto-pay checkout SDK. Collat auto-borrows MUSD on every transaction. | Next |
+| 3 | Audit, mainnet deployment, public beta with real BTC deposits | Soon |
+| 4 | Collat Card: physical and virtual debit card backed by BTC | Future |
+
+## Tracks
+
+### Bitcoin Track: Bank on Bitcoin
+BTC holders finally put their Bitcoin to work without selling. Collat unlocks dormant liquidity for everyday spending.
+
+### MEZO Track: Mezo Utilization
+Drives TVL through BTC deposits and MUSD borrowing volume on Mezo. Every position adds to the ecosystem.
+
+### MUSD Track: Supernormal dApps
+MUSD becomes a spendable currency. Checkout flows, merchant integration, and DeFi composability on a stable foundation.
+
 ## Getting Started
 
 ```bash
@@ -69,14 +132,3 @@ anchor test
 ```bash
 anchor deploy --provider.cluster devnet
 ```
-
-## Tracks
-
-### Bitcoin Track: Bank on Bitcoin
-BTC holders finally put their Bitcoin to work without selling. Collat unlocks dormant liquidity for everyday spending.
-
-### MEZO Track: Mezo Utilization
-Drives TVL through BTC deposits and MUSD borrowing volume on Mezo. Every position adds to the ecosystem.
-
-### MUSD Track: Supernormal dApps
-MUSD becomes a spendable currency. Checkout flows, merchant integration, and DeFi composability on a stable foundation.
