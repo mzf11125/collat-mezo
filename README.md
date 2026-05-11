@@ -40,14 +40,24 @@ Collat earns across three revenue streams:
 
 **The flywheel:** More BTC deposited raises the collateral base. More purchases drive transaction fee revenue. More card holders add interchange income. All three reinforce each other.
 
-## Collat Card
+## Collat Card (Tangem-Style NFC)
 
-A physical and virtual debit card backed by your BTC collateral, accepted anywhere Visa is accepted.
+A physical NFC card with an EAL6+ secure chip that stores your Mezo wallet private key. Tap to sign auto-borrow transactions. Self-custody always.
 
-- Auto-borrows MUSD the moment you swipe. No pre-loading required.
-- Works at any physical or online merchant worldwide.
-- BTC stays on-chain in your vault. Never held by us.
-- Virtual card available instantly; physical card shipped on mainnet.
+- **Private key generated on-chip** inside a certified Samsung secure chip. Never leaves. Cannot be extracted.
+- **Tap to borrow** — tap card to phone, app constructs auto-borrow tx, card signs via NFC, broadcasts to Mezo. Under 5 seconds.
+- **No seed phrase** — link 2-3 cards during setup. Lose one? Recover from a backup card. Key never exists in readable form.
+- **No battery, no USB, no screen** — resistant to remote hacking, physical tampering, water, dust, heat.
+- **Two-factor by design** — physical card + phone access code. No third party required.
+
+### Why Tangem beats a traditional Visa card
+
+| Factor | Collat NFC Card | Traditional Visa Card |
+|--------|-----------------|----------------------|
+| Issuer | None. Self-custody. | Bank/Visa partnership needed. |
+| KYC | None. | Mandatory. |
+| Private key | On secure chip, never leaves. | Held by issuer. |
+| Timeline | Ship tomorrow. | Months of legal work. |
 
 ## Architecture
 

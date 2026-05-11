@@ -107,13 +107,37 @@ Collat eliminates the manual borrow step. Users deposit BTC collateral once, the
 | Mainnet Deployment | P0 | Deploy to Mezo mainnet with real BTC deposits. |
 | Public Beta | P1 | Limited user onboarding with deposit caps. |
 
-### 5.4 Phase 4 — Collat Card
+### 5.4 Phase 4 — Collat Card (Tangem-Style NFC)
+
+A physical NFC card that stores your Mezo wallet private key inside a certified secure chip. Tap to sign. Self-custody always.
 
 | Feature | Priority | Description |
 |---------|----------|-------------|
-| Virtual Card | P1 | Instant virtual debit card, auto-borrows MUSD on swipe. |
-| Physical Card | P2 | Physical Visa/Mastercard shipped to users post-mainnet. |
+| NFC Card | P1 | Physical card with EAL6+ secure chip. Private key generated on-chip, never leaves. |
+| Tap-to-Borrow | P1 | Tap card to phone. App constructs auto-borrow tx, card signs via NFC, broadcasts to Mezo. |
 | Card Dashboard | P1 | Manage card, view transactions, repay from UI. |
+| Multi-Card Backup | P2 | Link 2-3 cards during setup. If you lose one, recover from backup card. No seed phrase. |
+
+#### How the Collat Card Works
+
+1. **Key Generation**: When you activate a Collat Card, a Mezo wallet private key is generated inside an EAL6+ certified secure chip (Samsung). This key never leaves the chip and cannot be extracted or copied.
+
+2. **Tap to Borrow**: At checkout, open the Collat app and tap your card to your phone. The app checks your position (LTV, available borrowing power), constructs an unsigned auto-borrow tx, sends it to the card via NFC. The secure chip signs it. The signed tx broadcasts to Mezo. MUSD settles the merchant. All in seconds.
+
+3. **Seedless Backup**: During setup, link 2-3 cards. They exchange the private key through encrypted chip-to-chip communication. The key never exists in readable form. Lose one card? Recover from a backup card.
+
+4. **Self-Custody Design**: No battery, no USB, no screen. Resistant to remote hacking, physical tampering, water, dust, heat. Security relies on physical possession of the card + phone access code — two-factor authentication without a third party.
+
+#### Why Tangem Model Beats a Traditional Visa Card
+
+| Factor | Tangem-Style Collat Card | Traditional Visa Crypto Card |
+|--------|--------------------------|------------------------------|
+| Issuer needed | None. Self-custody. | Bank/Visa partnership required. |
+| KYC | None. DeFi native. | Mandatory. |
+| Private key | On-chip, never leaves. Never backed up in readable form. | Held by issuer or custodian. |
+| Security | EAL6+ secure chip. No attack surface (no USB, no battery, no screen). | Dependent on issuer security. |
+| Spending | Auto-borrow MUSD via tap. Merchant settles in MUSD or via conversion. | Fiat settlement via Visa network. |
+| Timeline | Ship tomorrow. No partnership needed. | Months of legal + integration. |
 
 ---
 
@@ -151,7 +175,29 @@ Collat eliminates the manual borrow step. Users deposit BTC collateral once, the
 5. User can withdraw full BTC when debt = 0
 ```
 
-### 6.4 Liquidation Flow
+### 6.5 Tap-to-Borrow Flow (Collat Card)
+
+```
+1. User taps Collat Card to phone via NFC
+2. Collat app reads card, authenticates user
+3. App checks user position (LTV, borrowing power)
+4. App constructs unsigned auto-borrow tx for requested amount
+5. Card signs tx via NFC (key never leaves secure chip)
+6. Signed tx broadcasts to Mezo
+7. MUSD arrives in user's wallet, ready to spend
+8. All in under 5 seconds
+```
+
+### 6.6 Multi-Card Backup Flow
+
+```
+1. User activates Card A (primary)
+2. User taps Card B (backup) to phone
+3. Cards exchange private key through encrypted NFC communication
+4. Key never appears in readable form on any device
+5. User repeats for Card C (optional)
+6. If Card A is lost, tap Card B to phone to recover wallet
+```
 
 ```
 1. BTC price drops, pushing position above 75% LTV
