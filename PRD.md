@@ -230,6 +230,40 @@ If someone forks the same contracts and ships the same card, the winner is whoev
 
 **Principle:** AI never runs between the user and their swipe. Payment rails are always instant and deterministic. Models pre-compute limits and alerts offline. At checkout, only a fast deterministic LTV gate fires.
 
+### 8.5 Hackathon Tooling Integrations
+
+Collat integrates every Mezo hackathon technical partner to cover the full stack from testnet to mainnet.
+
+| Tool | What It Does for Collat | Why It Matters |
+|------|------------------------|----------------|
+| **Spectrum Nodes** | Primary RPC provider on Mezo testnet. Powers real-time position queries, transaction broadcasting, and on-chain data reads for the auto-borrow engine. | Required for testnet demo. Every borrow, repay, and liquidation tx goes through Spectrum. |
+| **Validation Cloud** | Enterprise RPC provider on Mezo mainnet. Low-latency node access for position tracking, collateral queries, and tx submission in production. | Mainnet upgrade path from Spectrum. Public endpoints available, API key for better rate limits. |
+| **Goldsky** | Indexes Collat vault data (positions, liquidations, borrow/repay events) via subgraphs on Mezo. Indexes BTC deposits on Bitcoin via Turbo pipelines. Powers the Collat dashboard with indexed data instead of raw RPC calls. AI Skills can auto-generate analytics queries. | Dashboard loads from indexed data — no RPC throttling, sub-second queries. AI Skills reduce back-end work. |
+| **Tenderly** | Simulates auto-borrow flows, liquidation scenarios, and cross-chain transactions before mainnet deploy. Monitors production for failed transactions or oracle inconsistencies. Traces failures across Mezo + bridged chains. | Catch contract bugs before audit. Debug cross-chain failures without raw chain data spelunking. |
+| **Boar Network** | Secondary RPC provider + Blockchain MCP for the AI agent layer. The MCP gives Collat's natural language interface direct access to query on-chain positions, historical transactions, and live LTV data. | MCP powers "Hey Collat, how much can I spend?" — the AI agent talks to the blockchain through Boar's MCP instead of custom RPC wrappers. |
+
+**Integration Architecture:**
+
+```
+Spectrum Nodes / Validation Cloud
+    |
+    v
+Collat Auto-Borrow Engine ← → Goldsky Subgraphs (indexed position data)
+    |                              |
+    v                              v
+Mezo Blockchain              Collat Dashboard (Goldsky-powered)
+    |
+    v
+Tenderly (simulate, monitor, trace)
+Boar MCP (AI agent blockchain queries)
+```
+
+**Hackathon Eligibility:**
+- **Spectrum Nodes** — Collat qualifies for the testnet RPC track. Every borrow/repay/liquidate instruction uses Spectrum as the primary RPC.
+- **Goldsky** — Collat qualifies for the data indexing track. Subgraphs index every vault event. Turbo pipeline indexes BTC deposit transactions on Bitcoin chain.
+- **Tenderly** — Collat qualifies for the multi-chain track. Simulate auto-borrow flows pre-deploy. Monitor production for failures.
+- **Boar Network** — Collat qualifies for the RPC + MCP track. MCP integration powers the natural language AI feature with on-chain data access.
+
 ---
 
 ## 9. Mezo Tracks
@@ -301,3 +335,8 @@ MUSD becomes a spendable currency. Collat turns a stablecoin into a payment rail
 - Pitch Deck: `Collat_Pitch_Deck.pptx`
 - Source Code: `github.com/mzf11125/collat-mezo`
 - Mezo: `mezo.org`
+- Spectrum Nodes: `spectrum-nodes.com`
+- Validation Cloud: `validationcloud.io/mezo`
+- Goldsky: `goldsky.com`
+- Tenderly: `tenderly.co`
+- Boar Network: `boar.network`

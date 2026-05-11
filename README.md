@@ -92,6 +92,30 @@ Borrowing is generally not a taxable event, but specific spending patterns can c
 
 Payment rails must be instant. Collat never runs AI inference between the user and their swipe. The model pre-computes limits and alerts offline. At checkout, the only check is a fast deterministic LTV gate.
 
+## Hackathon Tooling
+
+Collat integrates every Mezo hackathon technical partner across the stack.
+
+| Tool | Role in Collat |
+|------|----------------|
+| **Spectrum Nodes** | Primary RPC provider on Mezo testnet. Powers position queries and tx broadcasting. |
+| **Validation Cloud** | Enterprise RPC provider on Mezo mainnet for production. |
+| **Goldsky** | Indexes vault data (positions, liquidations, events) via subgraphs on Mezo + Bitcoin Turbo pipelines. Powers the dashboard. AI Skills auto-generate analytics. |
+| **Tenderly** | Simulates auto-borrow and liquidation scenarios pre-deploy. Monitors production for failures. Traces cross-chain issues. |
+| **Boar Network** | Secondary RPC + Blockchain MCP for the AI agent. MCP lets the natural language interface query on-chain positions directly. |
+
+**Architecture:**
+```
+Spectrum / Validation Cloud → Auto-Borrow Engine ← → Goldsky Subgraphs
+                                                          |
+                                                          v
+Mezo Blockchain                                     Collat Dashboard
+    |
+    v
+Tenderly (simulate, monitor, trace)
+Boar MCP (AI blockchain queries)
+```
+
 ## Smart Contract
 
 The program is at `programs/collat-mezo/src/lib.rs`.
