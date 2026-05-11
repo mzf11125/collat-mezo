@@ -153,6 +153,8 @@ The program is at `programs/collat-mezo/src/lib.rs`.
 
 ## Tracks
 
+Collat qualifies for all three hackathon tracks simultaneously.
+
 ### Bitcoin Track: Bank on Bitcoin
 BTC holders finally put their Bitcoin to work without selling. Collat unlocks dormant liquidity for everyday spending.
 
@@ -161,6 +163,16 @@ Drives TVL through BTC deposits and MUSD borrowing volume on Mezo. Every positio
 
 ### MUSD Track: Supernormal dApps
 MUSD becomes a spendable currency. Checkout flows, merchant integration, and DeFi composability on a stable foundation.
+
+## Judging Fit
+
+| Criteria | Weight | How Collat Scores |
+|----------|--------|-------------------|
+| Mezo Integration | 30% | MUSD is the spend asset in every transaction. Not an add-on — core to the product. |
+| Technical Implementation | 20% | Anchor smart contracts, AI moat, Goldsky subgraphs, Tenderly simulations, Boar MCP. |
+| Business Viability | 30% | Interest spread + tx fees + card interchange. Real revenue, not token emissions. |
+| User Experience | 10% | Deposit once, swipe infinitely. No manual borrow step. Natural language management. |
+| Presentation | 10% | Demo: deposit BTC > swipe > auto-borrow > settled. Clear narrative.
 
 ## Getting Started
 

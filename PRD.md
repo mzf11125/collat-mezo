@@ -266,7 +266,49 @@ Boar MCP (AI agent blockchain queries)
 
 ---
 
-## 9. Mezo Tracks
+## 9. Hackathon Alignment
+
+### 9.1 Requirement Checklist
+
+| Requirement | Collat Compliance |
+|-------------|------------------|
+| Integrate MUSD or MEZO | MUSD is the borrow asset. Every auto-borrow at checkout mints/spends MUSD. |
+| Deploy working demo on testnet | Smart contracts deployed on Mezo testnet via Anchor. Spectrum Nodes RPC. |
+| Original work / new approach | Auto-borrow at checkout is novel. No existing Mezo project does instant checkout lending. |
+| KYB for prize distribution | Noted. Will complete on submission. |
+
+### 9.2 Judging Criteria Mapping
+
+| Criterion | Weight | Collat Score Narrative |
+|-----------|--------|----------------------|
+| **Mezo Integration** | 30% | MUSD is not an add-on — it is the spend asset in every transaction. Collat drives MUSD demand through real consumer spending, which is exactly what Mezo's 2026 roadmap prioritizes (MUSD as everyday dollar layer). |
+| **Technical Implementation** | 20% | Anchor framework. BTC vault PDAs, MUSD borrow/repay/liquidate, price oracle. AI features (liquidation prediction, smart limits) add a defensible layer. Goldsky subgraphs + Tenderly simulations + Boar MCP demonstrate full-stack thinking. |
+| **Business Viability** | 30% | Three revenue streams (interest spread, tx fees, card interchange). Clear flywheel. Addresses real pain: $1T+ BTC waiting to be spent. Mezo ecosystem is early — Collat grows with it. |
+| **User Experience** | 10% | One deposit, infinite spends. No manual borrow step. Virtual + physical card (Phase 4). Natural language position management (Phase 4). Compared to "open trove, mint MUSD, send to wallet, find a merchant" — Collat is swipe and go. |
+| **Presentation Quality** | 10% | Demo: deposit BTC → swipe card → auto-borrow MUSD → merchant settled. Pitch: Bank on Bitcoin, but faster. |
+
+### 9.3 Track Coverage
+
+Collat qualifies for all three tracks simultaneously:
+
+| Track | How Collat Fits |
+|-------|-----------------|
+| **Bank on Bitcoin** | BTC as collateral. No wrapping, no selling. BTC stays on-chain in your vault. |
+| **Supernormal dApps (MUSD)** | MUSD is the spend currency. Auto-borrow at checkout makes MUSD a real payment rail. |
+| **MEZO Utilization** | Every Collat position adds BTC TVL and creates MUSD borrowing volume for Mezo. |
+
+### 9.4 Why Collat Wins This Hackathon
+
+Most projects will build another lending protocol or a basic dashboard. Collat is the only one that connects BTC collateral directly to a Visa card with auto-borrow. The judges will see:
+
+1. MUSD is not just integrated — it is the only thing moving in every transaction.
+2. The AI features show long-term thinking (most DeFi teams ignore this).
+3. The business model has a real path to revenue, not just token emissions.
+4. The user experience is genuinely different: deposit once, spend infinitely.
+
+---
+
+## 10. Mezo Tracks
 
 ### Bitcoin Track: Bank on Bitcoin
 
@@ -282,7 +324,7 @@ MUSD becomes a spendable currency. Collat turns a stablecoin into a payment rail
 
 ---
 
-## 10. Roadmap
+## 11. Roadmap
 
 | Phase | Milestone | Deliverables | Timeline |
 |-------|-----------|-------------|----------|
@@ -293,7 +335,7 @@ MUSD becomes a spendable currency. Collat turns a stablecoin into a payment rail
 
 ---
 
-## 11. Success Metrics
+## 12. Success Metrics
 
 | Metric | Target | Measurement |
 |--------|--------|-------------|
@@ -305,7 +347,7 @@ MUSD becomes a spendable currency. Collat turns a stablecoin into a payment rail
 
 ---
 
-## 12. Risks and Mitigations
+## 13. Risks and Mitigations
 
 | Risk | Severity | Mitigation |
 |------|----------|------------|
@@ -317,7 +359,7 @@ MUSD becomes a spendable currency. Collat turns a stablecoin into a payment rail
 
 ---
 
-## 13. Appendices
+## 14. Appendices
 
 ### A. Glossary
 
