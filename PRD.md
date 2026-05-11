@@ -217,6 +217,19 @@ Instructions: initializeVault, setPrice, updatePrice,
 - No interest accrual model yet (MVP uses fixed parameters).
 - Single collateral type (BTC only). Multi-collateral support is post-MVP.
 
+### 8.4 AI Features — Defensible Moat
+
+If someone forks the same contracts and ships the same card, the winner is whoever has better risk management and UX. AI is Collat's defensible moat. It improves with more data, while most DeFi protocols still use fixed thresholds.
+
+| Feature | Description | Runs |
+|---------|-------------|------|
+| Liquidation Prediction | Monitors on-chain flows, funding rates, macro signals. Proactive alerts before volatility hits your position. | Offline |
+| Smart Spending Limits | Dynamic per-transaction limit based on volatility regime, repayment history, MUSD liquidity. Most days you spend more than 60% LTV safely. | Offline |
+| Tax-Intelligent Routing | Classifies each auto-borrow by category. Generates year-end tax report. | Offline |
+| Natural Language Manager | Conversational interface to check LTV, repay, adjust position. "Hey Collat, how much can I spend?" | Offline |
+
+**Principle:** AI never runs between the user and their swipe. Payment rails are always instant and deterministic. Models pre-compute limits and alerts offline. At checkout, only a fast deterministic LTV gate fires.
+
 ---
 
 ## 9. Mezo Tracks
