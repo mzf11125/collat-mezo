@@ -68,6 +68,30 @@ User Wallet
 +------------------+     +------------------+
 ```
 
+## AI Features
+
+If someone forks the same contract and ships the same card, the winner is whoever has better risk management and UX. AI is Collat's defensible moat for three reasons: it gets better with more data, most DeFi protocols still use dumb fixed thresholds, and BTC holders value predictability above all else.
+
+### Liquidation Prediction
+
+Collat monitors on-chain flows, funding rates, and macro signals to predict BTC volatility before it hits your position. Instead of waiting for price to cross a fixed 75% LTV threshold, the AI sends proactive alerts: "BTC looks shaky this week. Consider adding collateral." Rule-based systems cannot catch regime shifts early.
+
+### Smart Spending Limits
+
+Static LTV caps (60% max, 75% liquidation) are worst-case math designed for the dumbest possible user. Collat's AI sets dynamic spending limits per transaction based on current volatility regime, repayment history, and MUSD liquidity depth. Most days you can spend more than 60% LTV safely. Some days the AI tightens the limit before the market drops your liquidation buffer.
+
+### Tax-Intelligent Routing
+
+Borrowing is generally not a taxable event, but specific spending patterns can create reporting complexity. Collat's AI classifies each auto-borrow by category and generates a year-end tax report. BTC holders care deeply about tax efficiency.
+
+### Natural Language Position Management
+
+"Hey Collat, how much can I spend on a laptop?" instead of opening a dashboard. Conversational interface to check LTV, repay, adjust position, or review spending history.
+
+### What AI Does NOT Touch
+
+Payment rails must be instant. Collat never runs AI inference between the user and their swipe. The model pre-computes limits and alerts offline. At checkout, the only check is a fast deterministic LTV gate.
+
 ## Smart Contract
 
 The program is at `programs/collat-mezo/src/lib.rs`.
